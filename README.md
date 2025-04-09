@@ -27,12 +27,22 @@ Reference:
 
 ## Demos
 
-### Demo 1 - Writer/Reviewer without Autogen
+### Writer/Reviewer without Autogen
 
-### Demo 2 - Writer/Reviewer with Autogen
+[Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
 
-### Demo 3 - KQL Writer (more advanced solution)
+### Write/Reviewer - Poor man's Agentic system
+
+[Writer/Reviewer - Poor man's Agentic system](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-poor.py)
+
+### Writer/Reviewer with Autogen
+
+[Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agent.py)
+
+### KQL Writer (more advanced solution)
+
+[Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agent.py)
 
 ### Demo 4 - Autogen Studio
 
-### Demo 5 - Poor man's agentic system
+
