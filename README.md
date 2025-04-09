@@ -46,7 +46,7 @@ AZURE_OPENAI_API_VERSION=2024-10-21
 ```
 
 Reference:
-- [Sample file]()
+- [Sample file](https://github.com/msalemor/agentic-intro-autogen/blob/main/.env-sample)
 
 ### Writer/Reviewer without AutoGen
 
