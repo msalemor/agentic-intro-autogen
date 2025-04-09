@@ -80,7 +80,7 @@ Agents:
 
 ```mermaid
 graph LR
-  S((Start<br>Task))-->A(Schema<br>Getter)-->B(KQL<br>Classifier)-->C(Example<br>Getter)-->D(KQL<br>Writer)-->E((End<br>Task))
+  S((Start<br>Task))-->A(Schema<br>Getter)-->B(Query<br>Classifier)-->C(Example<br>Getter)-->D(KQL<br>Writer)-->E((End<br>Task))
 ```
 
 [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
