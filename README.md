@@ -25,10 +25,14 @@ AutoGen core offers an easy way to quickly build event-driven, distributed, scal
 Reference:
 - [Autogen Core](https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/index.html)
 
-## Demo 1 - Writer/Reviewer without Autogen
+## Demos
 
-## Demo 2 - Writer/Reviewer with Autogen
+### Demo 1 - Writer/Reviewer without Autogen
 
-## Demo 3 - KQL Writer (more advanced solution)
+### Demo 2 - Writer/Reviewer with Autogen
 
-## Autogen
+### Demo 3 - KQL Writer (more advanced solution)
+
+### Demo 4 - Autogen Studio
+
+### Demo 5 - Poor man's agentic system
