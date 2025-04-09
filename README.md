@@ -24,7 +24,7 @@ Reference:
 - Agent definition: It is important to know how to configure the agents. Agents will have different capabilities such as having tools, having different system prompts, terminating messages, etc.
 - Termination: If not careful, an Agent conversation could run "forever". Special attention needs to be paid when to terminate a conversation.
 - Agent Team: There are different types of Agent team presets such as RoundRobinChat, SelectorGroupChat, MagenticOneGroupChat, and others.
-- Message observability and handling: 
+- Message observability and handling: It is important to know how to tap into the Agent conversation.
 
 ### What is AutoGen Core
 
