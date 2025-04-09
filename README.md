@@ -16,14 +16,14 @@ Reference:
 AgentChat is a high-level API for building multi-agent applications. It is built on top of the autogen-core package. 
 
 Reference:
-- [Autogen](https://microsoft.github.io/autogen/stable/index.html)
+- [Autogen AgentChat](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/index.html)
 
 ### What is Autogen Core
 
 AutoGen core offers an easy way to quickly build event-driven, distributed, scalable, resilient AI agent systems.
 
 Reference:
-- [Autogen](https://microsoft.github.io/autogen/stable/index.html)
+- [Autogen Core](https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/index.html)
 
 ## Demo 1 - Writer/Reviewer without Autogen
 
