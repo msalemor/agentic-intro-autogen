@@ -35,6 +35,19 @@ Reference:
 
 ## Demos
 
+### Requirements
+
+Create a `.env` file with the following settings:
+
+```bash
+AZURE_OPENAI_ENDPOINT=https://<NAME>.openai.azure.com/
+AZURE_OPENAI_API_KEY=<API_KEY>
+AZURE_OPENAI_API_VERSION=2024-10-21
+```
+
+Reference:
+- [Sample file]()
+
 ### Writer/Reviewer without AutoGen
 
 [Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
