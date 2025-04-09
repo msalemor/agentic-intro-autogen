@@ -5,11 +5,7 @@ WRITER_SYSTEM_MESSAGE = "You are a very creative children book author. Keep the 
 REVIEWER_SYSTEM_MESSAGE = "You are a helpful AI assistant which provides constructive feedback on Kids stories to add a postive impactful ending. Respond with 'APPROVE' to when your feedbacks are addressed."
 
 
-async def main(task: str) -> None:
-    if not task:
-        return
-
-    # Write the story
+async def write_story(task: str) -> str:
     messages = [{
         "role": "system",
         "content": WRITER_SYSTEM_MESSAGE
@@ -17,10 +13,10 @@ async def main(task: str) -> None:
         "role": "user",
         "content": task
     }]
-    story = await completion(messages=messages)
-    print(f"Story:\n{story}")
+    return await completion(messages=messages)
 
-    # Review the story
+
+async def review_story(story: str, previous_review=None, rewrite=None) -> str:
     messages = [{
         "role": "system",
         "content": REVIEWER_SYSTEM_MESSAGE
@@ -28,10 +24,23 @@ async def main(task: str) -> None:
         "role": "user",
         "content": story
     }]
-    review = await completion(messages=messages)
-    print(f"\nReview:\n{review}")
 
-    # Rewrite the story based on the review
+    if previous_review:
+        messages.append({
+            "role": "user",
+            "content": previous_review
+        })
+
+    if rewrite:
+        messages.append({
+            "role": "user",
+            "content": rewrite
+        })
+
+    return await completion(messages=messages)
+
+
+async def rewrite_story(story: str, review: str) -> str:
     messages = [{
         "role": "system",
         "content": WRITER_SYSTEM_MESSAGE
@@ -42,25 +51,28 @@ async def main(task: str) -> None:
         "role": "user",
         "content": review
     }]
-    rewrite = await completion(messages=messages)
+    return await completion(messages=messages)
+
+
+async def main(task: str) -> None:
+    if not task:
+        return
+
+    # Write the story
+    story = await write_story(task)
+    print(f"Story:\n{story}")
+
+    # Review the story
+    review = await review_story(story)
+    print(f"\nReview:\n{review}")
+
+    # Rewrite the story based on the review
+    rewrite = await rewrite_story(story, review)
     print(f"\nStoryRewrite:\n{rewrite}")
 
     # Review the rewritten story
-    messages = [{
-        "role": "system",
-        "content": REVIEWER_SYSTEM_MESSAGE
-    }, {
-        "role": "user",
-        "content": story
-    }, {
-        "role": "user",
-        "content": review
-    }, {
-        "role": "user",
-        "content": rewrite
-    }]
-    rewrite = await completion(messages=messages)
-    print(f"\nFinal Review:\n{rewrite}")
+    final_review = await review_story(story, review, rewrite)
+    print(f"\nFinal Review:\n{final_review}")
 
 
 if __name__ == "__main__":
