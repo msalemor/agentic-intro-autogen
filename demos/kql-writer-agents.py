@@ -88,8 +88,7 @@ Query sample: <query example>
 kql_query_generator_agent = AssistantAgent(
     "gen_kql_query",
     model_client,
-    system_message="""You are an AI that can generate a KQL queries based on the schema provided. 
-If the cluster and database names are provided, use them in the generated query. 
+    system_message="""You are an AI that can generate a KQL queries based on the user's request, the schema and sample provided. 
 
 Once query is generated finish with 'TERMINATE'.\n""",
 )
@@ -133,8 +132,8 @@ async def main():
         task="Find all the infra events in the last 1 hour"))
     # await Console(team.run_stream(
     #     task="Find all the infra events in the last 1 hour. Show the user's name"))
-    # await Console(team.run_stream(
-    #     task="Find all the events by user name and system name in the last 24 hours of type change"))
+    await Console(team.run_stream(
+        task="Find all the events by user name and system name in the last 24 hours of type change"))
     await process_agent_messages(task="Find all the infra events in the last 1 hour")
     # await process_agent_messages(task="Find all the codes events in the last 1 hour. Show the user name.")
     # await process_agent_messages(task="Write a query to find all events by user name and system name in the last 24 hours")
