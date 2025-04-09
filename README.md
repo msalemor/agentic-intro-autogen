@@ -37,11 +37,11 @@ Reference:
 
 ### Writer/Reviewer with Autogen
 
-[Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agent.py)
+[Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-agents.py)
 
 ### KQL Writer (more advanced solution)
 
-[Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agent.py)
+[Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
 
 ### Demo 4 - Autogen Studio
 
