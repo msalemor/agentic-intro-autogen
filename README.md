@@ -75,7 +75,7 @@ This sample uses AutoGen to create two agents participating in a RoundRobinChat.
 In this example, for Agents are used to generate KQL from natural language:
 
 Agents:
-- **Schema getter agent**: This agent is configured to analyze the query and us a tool to simulate getting the schema from participating tables or functions.
+- **Schema getter agent**: This agent is configured to analyze the query and us a tool to simulate getting the schema from participating tables or functions. The agent has a list of tables that knows of and uses calls the get_mock_schema function with the name of the tables.
 - **Query classifier agent**: This agent is configured to classify the KQL query as: single-table, multi-table single-cluster, multi-table multi-cluster.
 - **Example generator agent**: This agent is configured to generate a sample query based on the query classification.
 - **KQL writer agent**: This agent take the schema and the sample and generates a final query and terminates the conversation.

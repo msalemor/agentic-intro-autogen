@@ -12,7 +12,7 @@ model_client = get_model_client()
 
 async def mock_get_schema(name: str) -> dict:
     await asyncio.sleep(.1)
-    if name == "logs":
+    if name == "events":
         return {
             "cluster": "loggingevents.contoso.com",
             "database": "logs",
@@ -44,7 +44,7 @@ schema_getter_agent = AssistantAgent(
     model_client,
     tools=[mock_get_schema],
     system_message="""You are an AI that can get the table or function KQL schema. There are 3 main objects you can use to get the schema:
-logs: system events related to systems and users
+events: system events related to systems and users
 users: user information
 system: system information
 """,
@@ -70,17 +70,17 @@ example_generator_agent = AssistantAgent(
     model_client,
     system_message="""You are an AI that can generate a KQL examples based on the classification labels that you are provided.
 
-If the classification is 'single-table', the example is:
-events | where ts>ago(24h)
+If the classification is 'single-table', the query example is: 
+`events | where ts>ago(24h)`
 
-if the classification is 'multi-table single-cluster', the example is:
-events | join kind=inner (users) on $left.userid == $right.userid | where ts>ago(24h)
+if the classification is 'multi-table single-cluster', the query example is:
+`events | join kind=inner (users) on $left.userid == $right.userid | where ts>ago(24h)`
 
-if the classification is 'multi-table multi-cluster', the example is:
-cluster('master.contoso.com').database('services').systems | join kind=inner (cluster('loggingevents.contoso.com').database('logs').events) on $left.systemid == $right.systemid | where ts>ago(24h)
+if the classification is 'multi-table multi-cluster', the query example is:
+`cluster('master.contoso.com').database('services').systems | join kind=inner (cluster('loggingevents.contoso.com').database('logs').events) on $left.systemid == $right.systemid | where ts>ago(24h)`
 
 Output format:
-Query Sample: <query>
+Query sample: <query example>
 
 """,
 )
@@ -105,6 +105,7 @@ team = RoundRobinGroupChat(
 
 async def process_agent_messages(task: str):
     res = team.run_stream(task=task)
+    # await Console(res)  # Stream the messages to the console.
     print(f"Task:\n{task}\n")
     async for message in res:
         if isinstance(message, str):
@@ -122,8 +123,7 @@ async def process_agent_messages(task: str):
             # print("Other message type:", message)
             try:
                 print("Result:")
-                print(message.messages[-1].content)
-                print()
+                print(f"{message.messages[-1].content}\n")
             except Exception as e:
                 pass
 
@@ -131,10 +131,10 @@ async def process_agent_messages(task: str):
 async def main():
     await Console(team.run_stream(
         task="Find all the infra events in the last 1 hour"))
-    await Console(team.run_stream(
-        task="Find all the infra events in the last 1 hour. Show the user's name"))
-    await Console(team.run_stream(
-        task="Find all the events by user name and system name in the last 24 hours of type change"))
+    # await Console(team.run_stream(
+    #     task="Find all the infra events in the last 1 hour. Show the user's name"))
+    # await Console(team.run_stream(
+    #     task="Find all the events by user name and system name in the last 24 hours of type change"))
     await process_agent_messages(task="Find all the infra events in the last 1 hour")
     # await process_agent_messages(task="Find all the codes events in the last 1 hour. Show the user name.")
     # await process_agent_messages(task="Write a query to find all events by user name and system name in the last 24 hours")
