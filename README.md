@@ -39,6 +39,8 @@ Reference:
 
 - Python 3.11+
 - Azure OpenAI
+- Install the requirements: 
+  - `pip install -r requirements.txt`
 - Create a `.env` file with the following settings:
 
 ```bash
