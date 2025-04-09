@@ -29,6 +29,6 @@ Reference:
 
 ## Demo 2 - Writer/Reviewer with Autogen
 
-## Demo 3 - KQL Writer (more advanced soluition)
+## Demo 3 - KQL Writer (more advanced solution)
 
 ## Autogen
