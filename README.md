@@ -4,12 +4,19 @@
 
 An agentic system is an autonomous artificial intelligence designed to operate independently, making decisions and performing tasks without human intervention. These systems continuously learn and adapt using techniques like reinforcement learning and deep learning, allowing them to improve their decision-making capabilities over time. They are versatile, with applications in areas such as process automation, healthcare, supply chain management, and business intelligence. While agentic systems offer significant benefits, including increased productivity and innovation, they also present risks like potential bias and errors, necessitating careful development and regulation.
 
+
 ## What is AutoGen (0.5.1)
 
 A framework for building AI agents and applications.
 
 Reference:
 - [AutoGen](https://microsoft.github.io/autogen/stable/index.html)
+
+### Top concepts
+
+- Agent definition
+- Termination
+- Message observability and handling
 
 ### What is AutoGenChat
 
