@@ -12,18 +12,18 @@ A framework for building AI agents and applications.
 Reference:
 - [AutoGen](https://microsoft.github.io/autogen/stable/index.html)
 
-### Top concepts
-
-- Agent definition
-- Termination
-- Message observability and handling
-
 ### What is AutoGenChat
 
 AgentChat is a high-level API for building multi-agent applications. It is built on top of the autogen-core package. 
 
 Reference:
 - [AutoGen AgentChat](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/index.html)
+
+#### Top concepts
+
+- Agent definition
+- Termination
+- Message observability and handling
 
 ### What is AutoGen Core
 
