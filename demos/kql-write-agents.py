@@ -39,7 +39,7 @@ async def mock_get_schema(name: str) -> dict:
     return {}
 
 
-get_schema = AssistantAgent(
+schema_getter_agent = AssistantAgent(
     "get_schema",
     model_client,
     tools=[mock_get_schema],
@@ -65,7 +65,7 @@ Query classification: <classification>
 """,
 )
 
-example_generator = AssistantAgent(
+example_generator_agent = AssistantAgent(
     "expample_generator",
     model_client,
     system_message="""You are an AI that can generate a KQL examples based on the classification labels that you are provided.
@@ -85,7 +85,7 @@ Query Sample: <query>
 """,
 )
 
-kql_query_generator = AssistantAgent(
+kql_query_generator_agent = AssistantAgent(
     "gen_kql_query",
     model_client,
     system_message="""You are an AI that can generate a KQL queries based on the schema provided. 
@@ -97,7 +97,8 @@ Once query is generated finish with 'TERMINATE'.\n""",
 text_termination = TextMentionTermination("TERMINATE")
 
 team = RoundRobinGroupChat(
-    [get_schema, query_classifier_agent, example_generator, kql_query_generator],
+    [schema_getter_agent, query_classifier_agent,
+        example_generator_agent, kql_query_generator_agent],
     termination_condition=text_termination
 )
 

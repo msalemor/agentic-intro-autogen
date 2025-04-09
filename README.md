@@ -50,17 +50,38 @@ Reference:
 
 ### Writer/Reviewer without AutoGen
 
+This sample uses the completion API to write a story, then review the story, then modify the story according to the suggested changes, and finally perform a final review.
+
 [Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
 
 ### Write/Reviewer - Poor man's Agentic system
+
+This sample uses the a poor man's Agentic framework to write a story, then review the story, then modify the story according to the suggested changes. It is design to highligh some important Agentic concepts in a framework.
 
 [Writer/Reviewer - Poor man's Agentic system](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-poor.py)
 
 ### Writer/Reviewer with AutoGen
 
+This sample uses AutoGen to create two agents participating in a RoundRobinChat. There is the writer agent and the reviewer agent. The writer agent initially creates a story, and passes the story to the reviewer for a review. The reviewer either suggests more changes or approves the story. If the reviewer suggests more changes, it passes the story back to the write for a rewrite. The write rewrite the story and passes the story to the reviewer. The process continues until the reviewer approves the story and terminates the conversation with an `Approve` message.
+
 [Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-agents.py)
 
 ### KQL Writer with AutoGen (more advanced solution)
+
+In this example, for Agents are used to generate KQL from natural language:
+
+Agents:
+- Schema getter agent: This agent is configured to analyze the query and us a tool to simulate getting the schema from participating tables or functions.
+- Query classifier agent: This agent is configured to classify the KQL query as: single-table, multi-table single-cluster, multi-table multi-cluster.
+- Example generator agent: This agent is configured to generate a sample query based on the query classification.
+- KQL writer agent: This agent take the schema and the sample and generates a final query and terminates the conversation.
+
+#### Diagram
+
+```mermaid
+graph LR
+  S((Start<br>Task))-->A(Schema<br>Getter)-->B(KQL<br>Classifier)-->C(Example<br>Getter)-->D(KQL<br>Writer)-->E((End<br>Task))
+```
 
 [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
 
