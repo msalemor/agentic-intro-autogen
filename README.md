@@ -37,7 +37,7 @@ Reference:
 
 ### 3.1 - Requirements
 
-- Python 3.11+
+- Python 3.10+
 - Azure OpenAI
 - Install the requirements: 
   - `pip install -r requirements.txt`
