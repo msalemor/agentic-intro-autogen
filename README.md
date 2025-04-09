@@ -37,7 +37,9 @@ Reference:
 
 ### 3.1 - Requirements
 
-Create a `.env` file with the following settings:
+- Python 3.11+
+- Azure OpenAI
+- Create a `.env` file with the following settings:
 
 ```bash
 AZURE_OPENAI_ENDPOINT=https://<NAME>.openai.azure.com/
