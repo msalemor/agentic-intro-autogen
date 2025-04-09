@@ -52,19 +52,19 @@ Reference:
 
 This sample uses the completion API to write a story, then review the story, then modify the story according to the suggested changes, and finally perform a final review.
 
-[Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
+- Code: [Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
 
 ### 3.3 - Write/Reviewer - Poor man's Agentic system
 
 This sample uses the a poor man's Agentic framework to write a story, then review the story, then modify the story according to the suggested changes. It is design to highligh some important Agentic concepts in a framework.
 
-[Writer/Reviewer - Poor man's Agentic system](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-poor.py)
+- Code: [Writer/Reviewer - Poor man's Agentic system](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-poor.py)
 
 ### 3.4 - Writer/Reviewer with AutoGen
 
 This sample uses AutoGen to create two agents participating in a RoundRobinChat. There is the writer agent and the reviewer agent. The writer agent initially creates a story, and passes the story to the reviewer for a review. The reviewer either suggests more changes or approves the story. If the reviewer suggests more changes, it passes the story back to the write for a rewrite. The write rewrite the story and passes the story to the reviewer. The process continues until the reviewer approves the story and terminates the conversation with an `Approve` message.
 
-[Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-agents.py)
+- Code: [Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-agents.py)
 
 ### 3.5 - KQL Writer with AutoGen (more advanced solution)
 
@@ -83,7 +83,7 @@ graph LR
   S((Start<br>Task))-->A(Schema<br>Getter)-->B(Query<br>Classifier)-->C(Example<br>Getter)-->D(KQL<br>Writer)-->E((End<br>Task))
 ```
 
-[Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
+- Code: [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
 
 ### 3.6 - Autogen Studio
 
