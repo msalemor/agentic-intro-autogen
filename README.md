@@ -1,4 +1,4 @@
-# Introduction to Agentic solutions with AutoGen
+# Introduction to Agentic AI solutions with AutoGen
 
 ## What is Agentic System
 
@@ -21,9 +21,10 @@ Reference:
 
 #### Top concepts
 
-- Agent definition
-- Termination
-- Message observability and handling
+- Agent definition: It is important to know how to configure the agents. Agents will have different capabilities such as having tools, having different system prompts, terminating messages, etc.
+- Termination: If not careful, an Agent conversation could run "forever". Special attention needs to be paid when to terminate a conversation.
+- Agent Team: There are different types of Agent team presets such as RoundRobinChat, SelectorGroupChat, MagenticOneGroupChat, and others.
+- Message observability and handling: 
 
 ### What is AutoGen Core
 
