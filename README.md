@@ -21,10 +21,10 @@ Reference:
 
 #### 2.1.1 - Top concepts
 
-- Agent definition: It is important to know how to configure the agents. Agents will have different capabilities such as having tools, having different system prompts, terminating messages, etc.
-- Termination: If not careful, an Agent conversation could run "forever". Special attention needs to be paid when to terminate a conversation.
-- Agent Team: There are different types of Agent team presets such as RoundRobinChat, SelectorGroupChat, MagenticOneGroupChat, and others.
-- Message observability and handling: It is important to know how to tap into the Agent conversation.
+- **Agent definition**: It is important to know how to configure the agents. Agents will have different capabilities such as having tools, having different system prompts, terminating messages, etc.
+- **Termination**: If not careful, an Agent conversation could run "forever". Special attention needs to be paid when to terminate a conversation.
+- **Agent Team**: There are different types of Agent team presets such as RoundRobinChat, SelectorGroupChat, MagenticOneGroupChat, and others.
+- **Message observability and handling**: It is important to know how to tap into the Agent conversation.
 
 ### 2.2 - What is AutoGen Core
 
@@ -71,10 +71,10 @@ This sample uses AutoGen to create two agents participating in a RoundRobinChat.
 In this example, for Agents are used to generate KQL from natural language:
 
 Agents:
-- Schema getter agent: This agent is configured to analyze the query and us a tool to simulate getting the schema from participating tables or functions.
-- Query classifier agent: This agent is configured to classify the KQL query as: single-table, multi-table single-cluster, multi-table multi-cluster.
-- Example generator agent: This agent is configured to generate a sample query based on the query classification.
-- KQL writer agent: This agent take the schema and the sample and generates a final query and terminates the conversation.
+- **Schema getter agent**: This agent is configured to analyze the query and us a tool to simulate getting the schema from participating tables or functions.
+- **Query classifier agent**: This agent is configured to classify the KQL query as: single-table, multi-table single-cluster, multi-table multi-cluster.
+- **Example generator agent**: This agent is configured to generate a sample query based on the query classification.
+- **KQL writer agent**: This agent take the schema and the sample and generates a final query and terminates the conversation.
 
 #### 3.5.1 - Diagram
 
