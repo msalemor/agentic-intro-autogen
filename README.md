@@ -1,13 +1,13 @@
 # Introduction to Agentic AI solutions with AutoGen
 
-## 1.0 - What is Agentic System
+## 1.0 - What is Agentic AI
 
-An agentic system is an autonomous artificial intelligence designed to operate independently, making decisions and performing tasks without human intervention.
+Agentic AI refers to AI systems that can act autonomously, adapt in real-time, and solve multi-step problems based on context and objectives, going beyond simple question-answering or content generation. 
 
 
 ## 2.0 - What is AutoGen (0.5.1)
 
-A framework for building AI agents and applications.
+AutoGen is an open-source programming framework for building AI agents and facilitating cooperation among multiple agents to solve tasks. AutoGen aims to provide an easy-to-use and flexible framework for accelerating development and research on agentic AI. It offers features such as agents that can converse with other agents, LLM and tool use support, autonomous and human-in-the-loop workflows, and multi-agent conversation patterns.
 
 Reference:
 - [AutoGen](https://microsoft.github.io/autogen/stable/index.html)
@@ -90,6 +90,15 @@ graph LR
 - Code: [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
 
 ### 3.6 - Autogen Studio
+
+- Installation:
+  - `pip install autogenstudio`
+- Running:
+  - `export OPENAI_API_KEY=123 # avoid showing errors`
+  - `autogenstudio ui --appdir ./mydir #set an appdir folder`
+- Use the Gallery tab to setup teams, Agents, Tools, and Terminations
+  - > Note: Many of these configurations have to be done in the JSON editor.
+  - > Note: if working with Azure create and configure a model with the Azure settings. Assign these model to the participating agents (from the UI and the JSON editor).
 
 Reference:
 - [AutoGen Studio](https://microsoft.github.io/autogen/stable/user-guide/autogenstudio-user-guide/index.html)
