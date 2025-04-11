@@ -110,7 +110,7 @@ class AgentManager:
 
 
 async def main():
-    runner = AgentManager()
+    manager = AgentManager()
 
     # Create two agents
     book_author = Agent(
@@ -118,10 +118,10 @@ async def main():
     book_reviewer = Agent(
         "book_reviewer", system="You are an children author book editor. Given a story, provide feedback and suggestions for improvement including ending with a moral.")
 
-    runner.register(book_author)
-    runner.register(book_reviewer)
+    manager.register(book_author)
+    manager.register(book_reviewer)
 
-    await runner.process(
+    await manager.process(
         "Write a story about a cosmopolitan cat living in NYC.")
 
 if __name__ == "__main__":
