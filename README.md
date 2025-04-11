@@ -87,7 +87,7 @@ graph LR
   S((Start<br>Task))-->A(Schema<br>Getter)-->B(Query<br>Classifier)-->C(Example<br>Getter)-->D(KQL<br>Writer)-->E((End<br>Task))
 ```
 
-- Code: [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-write-agents.py)
+- Code: [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-writer-agents.py)
 
 ### 3.6 - Autogen Studio
 
