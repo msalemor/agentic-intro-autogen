@@ -4,7 +4,6 @@
 
 Agentic AI refers to AI systems that can act autonomously, adapt in real-time, and solve multi-step problems based on context and objectives, going beyond simple question-answering or content generation. 
 
-
 ## 2.0 - What is AutoGen (0.5.1)
 
 AutoGen is an open-source programming framework for building AI agents and facilitating cooperation among multiple agents to solve tasks. AutoGen aims to provide an easy-to-use and flexible framework for accelerating development and research on agentic AI. It offers features such as agents that can converse with other agents, LLM and tool use support, autonomous and human-in-the-loop workflows, and multi-agent conversation patterns.
@@ -53,6 +52,28 @@ Reference:
 - [Sample `.env` file](https://github.com/msalemor/agentic-intro-autogen/blob/main/.env-sample)
 
 ### 3.2 - Writer/Reviewer without AutoGen
+
+#### 3.2.1 - Copilot version
+
+```text
+system:
+You are both a children book author and a children book reviewer. 
+
+- Given a topic generate a story, but do not generate a feedback.
+- Given a feedback request, generate the feedback, but do not rewrite the story.
+- Given a rewrite request, rewrite the story with the available feedback, and if the rewrite includes the feedback recommendations finish with 'APPROVED'
+
+user:
+Write a story about a cosmopolitan cat living in a big city.
+
+user:
+Review the story
+
+user:
+Rewrite the story with the feedback
+```
+
+#### 3.2.2 - Script version
 
 This sample uses the completion API to write a story, then review the story, then modify the story according to the suggested changes, and finally perform a final review.
 
