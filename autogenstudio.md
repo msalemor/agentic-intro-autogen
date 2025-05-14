@@ -164,6 +164,55 @@ result = await team_manager.run_stream(
 
 ---
 
+## Foundational Concepts for Leveraging AutoGen
+
+When building with AutoGen and AutoGen Studio, keep these foundational concepts in mind:
+
+### 1. Agent Abstraction
+- **Agents** are the core building blocks. Each agent encapsulates a role, behavior, and memory, and can use LLMs, tools, or custom logic.
+- Agents can be assistants, critics, verifiers, user proxies, or any custom role you define.
+
+### 2. Team Composition
+- **Teams** are collections of agents working together using a defined communication pattern (e.g., round-robin, selector, graph flow).
+- Teams can be configured via JSON/YAML or Python dicts, and can be dynamically created or loaded from files.
+
+### 3. Communication Patterns
+- AutoGen supports multiple team communication patterns:
+  - **Selector Group Chat:** A coordinator selects which agent should act next.
+  - **Swarm:** Agents act in parallel or in a loosely coordinated fashion.
+  - **GraphFlow:** Agents are connected in a directed graph, enabling workflow-like execution.
+
+### 4. Tool Integration
+- Agents can be equipped with tools (e.g., search, calculator, code execution) to extend their capabilities beyond LLM-only reasoning.
+- Tools are modular and can be added or customized in the gallery.
+
+### 5. Streaming and Interactivity
+- Team execution is streamed in real time, allowing for interactive workflows and live feedback.
+- User proxy agents can inject human input into the workflow at decision points.
+
+### 6. Extensibility
+- You can add new agents, tools, team templates, and evaluation strategies by extending the gallery and evaluation system.
+- Custom judges and runners allow for domain-specific evaluation and orchestration.
+
+### 7. Configuration and Environment
+- Use environment variables and configuration files to manage API keys, database URIs, and other runtime settings.
+- The app directory structure and database are configurable for different deployment scenarios.
+
+### 8. Evaluation and Validation
+- Leverage the evaluation system to benchmark agent/team performance using automated or human-in-the-loop judges.
+- Use validation and testing services to ensure component correctness before deployment.
+
+### 9. Serialization and Sharing
+- Agents, teams, and tools can be serialized for reuse, sharing, or deployment across environments.
+- Gallery components can be exported/imported as JSON for collaboration.
+
+### 10. Observability and Debugging
+- Built-in logging, tracing, and event streaming make it easy to debug workflows and monitor agent/team behavior.
+
+By understanding and applying these concepts, you can design, build, and evaluate sophisticated multi-agent workflows tailored to your specific needs using AutoGen Studio.
+
+---
+
 ### Agent Request Processing and Result Flow
 
 When a request (task) is submitted to a team via the `TeamManager`, the following process occurs:
