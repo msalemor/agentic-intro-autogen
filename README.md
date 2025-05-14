@@ -122,4 +122,5 @@ graph LR
   - > Note: if working with Azure create and configure a model with the Azure settings. Assign these model to the participating agents (from the UI and the JSON editor).
 
 Reference:
+- [Source Code](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-studio)
 - [AutoGen Studio](https://microsoft.github.io/autogen/stable/user-guide/autogenstudio-user-guide/index.html)
