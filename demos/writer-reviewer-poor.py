@@ -1,4 +1,5 @@
 import asyncio
+import click
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List
@@ -105,7 +106,13 @@ class AgentManager:
             Message(agent="runner", role="runner", content="Done", ts=datetime.now()))
         print("Final context:")
         for message in shared_message_context:
-            print(f"{message.agent} <-> {message.role}:\n{message.content}")
+            if message.agent == "doc_author":
+                click.echo(click.style(
+                    f"{message.agent} <-> {message.role}:\n{message.content}", fg="green"))
+            else:
+                click.echo(click.style(
+                    f"{message.agent} <-> {message.role}:\n{message.content}", fg="yellow"))
+            # print(f"{message.agent} <-> {message.role}:\n{message.content}")
         return shared_message_context
 
 
@@ -114,15 +121,15 @@ async def main():
 
     # Create two agents
     book_author = Agent(
-        "book_author", system="You are an AI children book author. Given a title create a fun and inspiring short story.")
+        "doc_author", system="You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions.")
     book_reviewer = Agent(
-        "book_reviewer", system="You are an children author book editor. Given a story, provide feedback and suggestions for improvement including ending with a moral.")
+        "doc_reviewer", system="You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed.")
 
     manager.register(book_author)
     manager.register(book_reviewer)
 
     await manager.process(
-        "Write a story about a cosmopolitan cat living in NYC.")
+        "Write a technical document about prompt engineering.")
 
 if __name__ == "__main__":
 

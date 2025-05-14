@@ -8,17 +8,17 @@ from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.conditions import TextMentionTermination
 
 
-Story_writer = AssistantAgent(
-    "Story_writer",
+doc_writer = AssistantAgent(
+    "doc_writer",
     model_client=get_creative_model_client(),
-    system_message="You are a very creative children book author. Keep the stories short. If revising the story, write the full story with the revisions.",
+    system_message="You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions.",
 )
 
 # Create the critic agent.
-Story_reviewer = AssistantAgent(
-    "Story_reviewer",
+doc_reviewer = AssistantAgent(
+    "doc_reviewer",
     model_client=get_model_client(),
-    system_message="You are a helpful AI assistant which provides constructive feedback on Kids stories to add a postive impactful ending. Respond with 'APPROVE' to when your feedbacks are addressed.",
+    system_message="You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed.",
 )
 
 # Define a termination condition that stops the task if the critic approves.
@@ -27,7 +27,7 @@ text_termination = TextMentionTermination("APPROVE")
 
 async def process(task: str) -> None:
     team = RoundRobinGroupChat(
-        [Story_writer, Story_reviewer], termination_condition=text_termination)
+        [doc_writer, doc_reviewer], termination_condition=text_termination)
     res = team.run_stream(task=task)
     # await Console(res)  # Stream the messages to the console.
     async for message in res:
@@ -38,20 +38,24 @@ async def process(task: str) -> None:
             if hasattr(message, "source"):
                 # print("Message role:", message.role)
                 click.echo(click.style(message.source +
-                           "\n", fg='yellow', bold=True))
+                           "\n", fg='cyan', bold=True))
             # print("Message content:", message.content)
-            print(message.content + "\n")
+            if message.source == "doc_writer":
+                click.echo(click.style(message.content + "\n", fg="green"))
+            else:
+                click.echo(click.style(message.content + "\n", fg="yellow"))
         else:
             # print("Other message type:", message)
             try:
                 msg = message.messages[-1]
-                print(msg)
+                # print(msg)
+                click.echo(click.style(msg.content + "\n", fg="orange"))
             except Exception as e:
                 pass
 
 
 async def main():
-    await process("Write a story about a dog living in the moon.")
+    await process("Write a technical document about prompt engineering.")
 
     # Run the asynchronous function
 if __name__ == "__main__":

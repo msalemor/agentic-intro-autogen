@@ -1,8 +1,9 @@
 import asyncio
+import click
 from common import completion
 
-WRITER_SYSTEM_MESSAGE = "You are a very creative children book author. Keep the stories short. If revising the story, write the full story with the revisions."
-REVIEWER_SYSTEM_MESSAGE = "You are a helpful AI assistant which provides constructive feedback on Kids stories to add a postive impactful ending. Respond with 'APPROVE' to when your feedbacks are addressed."
+WRITER_SYSTEM_MESSAGE = "You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions."
+REVIEWER_SYSTEM_MESSAGE = "You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed."
 
 
 async def write_story(task: str) -> str:
@@ -60,15 +61,18 @@ async def main(task: str) -> None:
 
     # Write the story
     story = await write_story(task)
-    print(f"Story:\n{story}")
+    click.echo(click.style(f"Document:\n{story}", fg="yellow"))
+    # print(f"Story:\n{story}")
 
     # Review the story
     review = await review_story(story)
-    print(f"\nReview:\n{review}")
+    click.echo(click.style(f"\nReview:\n{review}", fg="green"))
+    # print(f"\nReview:\n{review}")
 
     # Rewrite the story based on the review
     rewrite = await rewrite_story(story, review)
-    print(f"\nStoryRewrite:\n{rewrite}")
+    click.echo(click.style(f"\Document Rewrite:\n{rewrite}", fg="yellow"))
+    # print(f"\nStory Rewrite:\n{rewrite}")
 
     # Review the rewritten story
     final_review = await review_story(story, review, rewrite)
@@ -76,4 +80,4 @@ async def main(task: str) -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main(task="Write a story about a dog living in the moon."))
+    asyncio.run(main(task="Write about prompt engineering."))

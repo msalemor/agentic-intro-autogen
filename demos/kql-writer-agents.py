@@ -4,6 +4,7 @@ from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.conditions import TextMentionTermination
 from autogen_agentchat.ui import Console
 from autogen_agentchat.teams import RoundRobinGroupChat
+import click
 from common import get_model_client
 
 
@@ -116,13 +117,14 @@ async def process_agent_messages(task: str):
             #     click.echo(click.style(message.source +
             #                "\n", fg='yellow', bold=True))
             # # print("Message content:", message.content)
-            # print(message.content + "\n")
-            pass
+            click.echo(click.style(message.content + "\n", fg="yellow"))
+            # pass
         else:
             # print("Other message type:", message)
             try:
                 print("Result:")
-                print(f"{message.messages[-1].content}\n")
+                click.echo(click.style(
+                    f"{message.messages[-1].content}\n", fg="green"))
             except Exception as e:
                 pass
 
@@ -134,6 +136,8 @@ async def main():
     #     task="Find all the infra events in the last 1 hour. Show the user's name"))
     await Console(team.run_stream(
         task="Find all the events by user name and system name in the last 24 hours of type change"))
+
+    # Note: display only the result
     await process_agent_messages(task="Find all the infra events in the last 1 hour")
     # await process_agent_messages(task="Find all the codes events in the last 1 hour. Show the user name.")
     # await process_agent_messages(task="Write a query to find all events by user name and system name in the last 24 hours")
