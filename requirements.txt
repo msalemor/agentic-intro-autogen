@@ -1,6 +1,6 @@
 python-dotenv
-autogen-agentchat==0.5.1
-autogen-ext[openai]==0.5.1
+autogen-agentchat==0.5.7
+autogen-ext[openai]==0.5.7
 click
 dataclasses_json
-autogenstudio
+autogenstudio==0.1.5

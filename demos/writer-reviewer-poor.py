@@ -120,13 +120,13 @@ async def main():
     manager = AgentManager()
 
     # Create two agents
-    book_author = Agent(
+    document_author = Agent(
         "doc_author", system="You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions.")
-    book_reviewer = Agent(
+    document_reviewer = Agent(
         "doc_reviewer", system="You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed.")
 
-    manager.register(book_author)
-    manager.register(book_reviewer)
+    manager.register(document_author)
+    manager.register(document_reviewer)
 
     await manager.process(
         "Write a technical document about prompt engineering.")

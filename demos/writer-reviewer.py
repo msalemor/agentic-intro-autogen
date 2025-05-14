@@ -6,7 +6,7 @@ WRITER_SYSTEM_MESSAGE = "You are a AI techical document author. Write a concise 
 REVIEWER_SYSTEM_MESSAGE = "You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed."
 
 
-async def write_story(task: str) -> str:
+async def document_writer(task: str) -> str:
     messages = [{
         "role": "system",
         "content": WRITER_SYSTEM_MESSAGE
@@ -17,7 +17,7 @@ async def write_story(task: str) -> str:
     return await completion(messages=messages)
 
 
-async def review_story(story: str, previous_review=None, rewrite=None) -> str:
+async def document_reviewer(story: str, previous_review=None, rewrite=None) -> str:
     messages = [{
         "role": "system",
         "content": REVIEWER_SYSTEM_MESSAGE
@@ -41,7 +41,7 @@ async def review_story(story: str, previous_review=None, rewrite=None) -> str:
     return await completion(messages=messages)
 
 
-async def rewrite_story(story: str, review: str) -> str:
+async def rewrite_document(story: str, review: str) -> str:
     messages = [{
         "role": "system",
         "content": WRITER_SYSTEM_MESSAGE
@@ -60,23 +60,24 @@ async def main(task: str) -> None:
         return
 
     # Write the story
-    story = await write_story(task)
-    click.echo(click.style(f"Document:\n{story}", fg="yellow"))
+    document = await document_writer(task)
+    click.echo(click.style(f"Document:\n{document}", fg="yellow"))
     # print(f"Story:\n{story}")
 
     # Review the story
-    review = await review_story(story)
-    click.echo(click.style(f"\nReview:\n{review}", fg="green"))
+    document_review = await document_reviewer(document)
+    click.echo(click.style(f"\nReview:\n{document_review}", fg="green"))
     # print(f"\nReview:\n{review}")
 
     # Rewrite the story based on the review
-    rewrite = await rewrite_story(story, review)
-    click.echo(click.style(f"\Document Rewrite:\n{rewrite}", fg="yellow"))
+    document_rewrite = await rewrite_document(document, document_review)
+    click.echo(click.style(
+        f"\Document Rewrite:\n{document_rewrite}", fg="yellow"))
     # print(f"\nStory Rewrite:\n{rewrite}")
 
     # Review the rewritten story
-    final_review = await review_story(story, review, rewrite)
-    print(f"\nFinal Review:\n{final_review}")
+    document_final_review = await document_reviewer(document, document_review, document_rewrite)
+    print(f"\nFinal Review:\n{document_final_review}")
 
 
 if __name__ == "__main__":
