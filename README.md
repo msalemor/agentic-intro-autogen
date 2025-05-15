@@ -6,7 +6,7 @@ Agentic AI refers to AI systems that can act autonomously, adapt in real-time, a
 
 ## 2.0 - What is AutoGen (0.5)
 
-AutoGen is an open-source programming framework for building AI agents and facilitating cooperation among multiple agents to solve tasks. AutoGen aims to provide an easy-to-use and flexible framework for accelerating development and research on agentic AI. It offers features such as agents that can converse with other agents, LLM and tool use support, autonomous and human-in-the-loop workflows, and multi-agent conversation patterns.
+AutoGen is an open-source programming framework, from Microsoft Research, for building AI agents and facilitating cooperation among multiple agents to solve tasks. AutoGen aims to provide an easy-to-use and flexible framework for accelerating development and research on agentic AI. It offers features such as agents that can converse with other agents, LLM and tool use support, autonomous and human-in-the-loop workflows, and multi-agent conversation patterns.
 
 Reference:
 - [AutoGen](https://microsoft.github.io/autogen/stable/index.html)
