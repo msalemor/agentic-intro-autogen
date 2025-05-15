@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import List
 from dataclasses_json import dataclass_json
 
-from common import completion
+from common import REVIEWER_SYSTEM_MESSAGE, WRITER_SYSTEM_MESSAGE, completion
 
 
 @dataclass_json
@@ -121,9 +121,9 @@ async def main():
 
     # Create two agents
     document_author = Agent(
-        "doc_author", system="You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions.")
+        "doc_author", system=WRITER_SYSTEM_MESSAGE)
     document_reviewer = Agent(
-        "doc_reviewer", system="You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed.")
+        "doc_reviewer", system=REVIEWER_SYSTEM_MESSAGE)
 
     manager.register(document_author)
     manager.register(document_reviewer)

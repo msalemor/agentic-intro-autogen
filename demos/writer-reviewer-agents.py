@@ -1,6 +1,6 @@
 import asyncio
 import click
-from common import get_creative_model_client, get_model_client
+from common import REVIEWER_SYSTEM_MESSAGE, WRITER_SYSTEM_MESSAGE, get_creative_model_client, get_model_client
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.ui import Console
@@ -11,14 +11,14 @@ from autogen_agentchat.conditions import TextMentionTermination
 doc_writer = AssistantAgent(
     "doc_writer",
     model_client=get_creative_model_client(),
-    system_message="You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions.",
+    system_message=WRITER_SYSTEM_MESSAGE,
 )
 
 # Create the critic agent.
 doc_reviewer = AssistantAgent(
     "doc_reviewer",
     model_client=get_model_client(),
-    system_message="You are a reviewer AI assistant who can review technical documents. Make sure that the reviesion include an edge if approprite for the subject. Respond with 'APPROVE' to when your feedbacks are addressed.",
+    system_message=REVIEWER_SYSTEM_MESSAGE,
 )
 
 # Define a termination condition that stops the task if the critic approves.

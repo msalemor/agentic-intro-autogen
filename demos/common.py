@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
 from openai import AsyncAzureOpenAI
 
+WRITER_SYSTEM_MESSAGE = "You are a AI techical document author. Write a concise document. If revising the document, write the full document with the revisions."
+REVIEWER_SYSTEM_MESSAGE = "You are a AI technical document reviewer that can review technical documents. Make sure that the revised document include edge scenarios if approprite for the topic. Respond with 'APPROVE' your feedbacks are addressed."
+
 load_dotenv()
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
