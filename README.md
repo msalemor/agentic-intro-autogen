@@ -37,7 +37,6 @@ Reference:
 ### 3.1 - Requirements
 
 - Python 3.10+
-- Azure OpenAI
 - Install the requirements: 
   - `pip install -r requirements.txt`
 - Create a `.env` file with the following settings:
@@ -51,47 +50,45 @@ AZURE_OPENAI_API_VERSION=2024-10-21
 Reference:
 - [Sample `.env` file](https://github.com/msalemor/agentic-intro-autogen/blob/main/.env-sample)
 
-### 3.2 - Writer/Reviewer without AutoGen
-
-#### 3.2.1 - Copilot version
+### 3.2 - Copilot version
 
 ```text
 system:
-You are both a children book author and a children book reviewer. 
+You are both a technical document writer and reviewer. 
 
-- Given a topic generate a story, but do not generate a feedback.
+- Given a topic generate a technical document, but do not generate a feedback.
 - Given a feedback request, generate the feedback, but do not rewrite the story.
-- Given a rewrite request, rewrite the story with the available feedback, and if the rewrite includes the feedback recommendations finish with 'APPROVED'
+- Given a rewrite request, rewrite the document with the available feedback, and if the rewrite includes the feedback recommendations. Finish with 'APPROVED'
 
 user:
-Write a story about a cosmopolitan cat living in a big city.
+Write a document about prompt engineering.
 
 user:
-Review the story
+Review the document
 
 user:
-Rewrite the story with the feedback
+Rewrite the document with the feedback
 ```
 
-#### 3.2.2 - Script version
+### 3.3 - SDK Version
 
 This sample uses the completion API to write a story, then review the story, then modify the story according to the suggested changes, and finally perform a final review.
 
 - Code: [Writer/Reviewer - No Agents](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer.py)
 
-### 3.3 - Write/Reviewer - Poor man's Agentic system
+### 3.4 - Write/Reviewer - Poor man's Agentic system
 
 This sample uses the a poor man's Agentic framework to write a story, then review the story, then modify the story according to the suggested changes. It is design to highligh some important Agentic concepts in a framework.
 
 - Code: [Writer/Reviewer - Poor man's Agentic system](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-poor.py)
 
-### 3.4 - Writer/Reviewer with AutoGen
+### 3.5 - Writer/Reviewer with AutoGen
 
 This sample uses AutoGen to create two agents participating in a RoundRobinChat. There is the writer agent and the reviewer agent. The writer agent initially creates a story, and passes the story to the reviewer for a review. The reviewer either suggests more changes or approves the story. If the reviewer suggests more changes, it passes the story back to the write for a rewrite. The write rewrite the story and passes the story to the reviewer. The process continues until the reviewer approves the story and terminates the conversation with an `Approve` message.
 
 - Code: [Agentic - Writer/Reviewer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/writer-reviewer-agents.py)
 
-### 3.5 - KQL Writer with AutoGen (more advanced solution)
+### 3.6 - KQL Writer with AutoGen (more advanced solution)
 
 In this example, for Agents are used to generate KQL from natural language:
 
@@ -101,7 +98,7 @@ Agents:
 - **Example generator agent**: This agent is configured to generate a sample query based on the query classification.
 - **KQL writer agent**: This agent take the schema and the sample and generates a final query and terminates the conversation.
 
-#### 3.5.1 - Diagram
+#### 3.6.1 - Diagram
 
 ```mermaid
 graph LR
@@ -110,7 +107,7 @@ graph LR
 
 - Code: [Agentic - KQL Writer](https://github.com/msalemor/agentic-intro-autogen/blob/main/demos/kql-writer-agents.py)
 
-### 3.6 - Autogen Studio
+## 4 - Autogen Studio
 
 - Installation:
   - `pip install autogenstudio`
